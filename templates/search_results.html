@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Here’s a list of potential roommates you can contact based on your preferences:</h2>
+
+        {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>School Year</th>
+                    <th>Residence</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profile in results %}
+                <tr>
+                    <td>{{ profile.username }}</td>
+                    <td>{{ profile.email }}</td>
+                    <td>{{ profile.school_year }}</td>
+                    <td>{{ profile.residence }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No results found matching search criteria.</p>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="btn back-btn">Back to Home</a>
+    </div>
+</body>
+
+</html>

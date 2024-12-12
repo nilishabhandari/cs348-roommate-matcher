@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Roommates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Search Active Roommate Listings</h2>
+        <form action="{{ url_for('search') }}" method="post">
+            <label>Select your gender:</label>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+
+            <label>Your residence hall:</label>
+            <select name="residence">
+                <option value="">-- Select Residence --</option>
+                <option value="Windsor">Windsor</option>
+                <option value="Wiley">Wiley</option>
+                <option value="Earhart">Earhart</option>
+                <option value="First Street Towers">First Street Towers</option>
+                <option value="Honors">Honors</option>
+                <option value="Tarkington">Tarkington</option>
+                <option value="Meredith">Meredith</option>
+            </select><br>
+
+            <label>Are you okay with a smoker?:</label>
+            <input type="checkbox" name="ok_with_smoker"><br>
+            <button type="submit" class="btn">Search</button>
+        </form>
+        <a href="{{ url_for('home') }}" class="btn back-btn">Back to Home</a>
+    </div>
+</body>
+
+</html>

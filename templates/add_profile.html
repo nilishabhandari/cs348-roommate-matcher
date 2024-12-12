@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Add Profile</h2>
+        <form action="{{ url_for('add_profile') }}" method="post">
+            <label>Username:</label><input type="text" name="username" required><br>
+            <label>Email:</label><input type="email" name="email" required><br>
+            <label>School Year:</label>
+            <select name="school_year" required>
+                <option value="Freshman">Freshman</option>
+                <option value="Sophomore">Sophomore</option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
+            </select><br>
+            <label>Residence Hall:</label>
+            <select name="residence" required>
+                <option value="Windsor">Windsor</option>
+                <option value="Wiley">Wiley</option>
+                <option value="Earhart">Earhart</option>
+                <option value="First Street Towers">First Street Towers</option>
+                <option value="Honors">Honors</option>
+                <option value="Tarkington">Tarkington</option>
+                <option value="Meredith">Meredith</option>
+            </select><br>
+            <label>Your gender:</label>
+            <select name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+            <label>Roommate's preferred Gender:</label>
+            <select name="preferred_gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+            <label>Are you a smoker:</label><input type="checkbox" name="smoker"><br>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <a href="{{ url_for('home') }}" class="btn back-btn">Back to Home</a>
+    </div>
+</body>
+
+</html>

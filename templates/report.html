@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Profile Report</h2>
+
+        <form method="post" action="{{ url_for('report') }}">
+            <label>Gender:</label>
+            <select name="gender">
+                <option value="">-- Select Gender --</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+
+            <label>Residence:</label>
+            <select name="residence">
+                <option value="">-- Select Residence --</option>
+                {% for residence in residences %}
+                <option value="{{ residence }}">{{ residence }}</option>
+                {% endfor %}
+            </select><br>
+
+            <button type="submit" class="btn">Generate Report</button>
+        </form>
+
+        {% if results %}
+        <h3>Report Summary</h3>
+        <p><strong>Number of Smokers:</strong> {{ num_smokers }}</p>
+        <p><strong>Number of Females:</strong> {{ num_females }}</p>
+        <p><strong>Number of Males:</strong> {{ num_males }}</p>
+
+        <h3>Detailed Results</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>School Year</th>
+                    <th>Residence</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profile in results %}
+                <tr>
+                    <td>{{ profile.username }}</td>
+                    <td>{{ profile.email }}</td>
+                    <td>{{ profile.school_year }}</td>
+                    <td>{{ profile.residence }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No data found matching criteria.</p>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="btn back-btn">Back to Home</a>
+    </div>
+</body>
+
+</html>
